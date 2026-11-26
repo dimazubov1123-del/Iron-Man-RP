@@ -37,7 +37,7 @@ npm run preview
 ```
 
 ## Публикация через GitHub Pages
-В настройках репозитория откройте **Settings → Pages**, выберите **GitHub Actions** как источник публикации. Workflow для автоматической сборки будет добавлен в следующем обновлении.
+В настройках репозитория откройте **Settings → Pages**, выберите **GitHub Actions** как источник публикации. Workflow `.github/workflows/pages.yml` автоматически собирает проект и публикует его через GitHub Pages при обновлении ветки `main`.
 
 ## Технологии
 React, TypeScript, Vite, Lucide React, Web Speech API.

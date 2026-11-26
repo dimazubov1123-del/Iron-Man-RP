@@ -21,7 +21,7 @@ function ArmorScene({stage}:SceneProps){
   const red=mat(0x8e241d),red2=mat(0xb93a2b),gold=mat(0xc58b3c,.88,.2),dark=mat(0x1a2026,.7,.32),cyan=mat(0x8af7ff,.25,.13,0x19c9ed)
   const floorMat=mat(0x111a22,.55,.5)
   const armor=new THREE.Group();scene.add(armor)
-  const mesh=(g:THREE.BufferGeometry,m:THREE.Material,p:THREE.Group,x:number,y:number,z:number,sx=1,sy=1,sz=1)=>{const o=new THREE.Mesh(g,m);o.position.set(x,y,z);o.scale.set(sx,sy,sz);o.castShadow=true;o.receiveShadow=true;p.add(o);return o}
+  const mesh=(g:THREE.BufferGeometry,m:THREE.Material,p:THREE.Object3D,x:number,y:number,z:number,sx=1,sy=1,sz=1)=>{const o=new THREE.Mesh(g,m);o.position.set(x,y,z);o.scale.set(sx,sy,sz);o.castShadow=true;o.receiveShadow=true;p.add(o);return o}
   const ball=(p:THREE.Group,m:THREE.Material,x:number,y:number,z:number,sx:number,sy:number,sz:number)=>mesh(new THREE.SphereGeometry(1,32,24),m,p,x,y,z,sx,sy,sz)
   const box=(p:THREE.Group,m:THREE.Material,x:number,y:number,z:number,sx:number,sy:number,sz:number)=>mesh(new THREE.BoxGeometry(sx,sy,sz),m,p,x,y,z)
   const cyl=(p:THREE.Group,m:THREE.Material,x:number,y:number,z:number,r1:number,r2:number,h:number)=>mesh(new THREE.CylinderGeometry(r1,r2,h,32),m,p,x,y,z)

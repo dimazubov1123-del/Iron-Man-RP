@@ -22,9 +22,9 @@ function ArmorScene({stage}:SceneProps){
   const floorMat=mat(0x111a22,.55,.5)
   const armor=new THREE.Group();scene.add(armor)
   const mesh=(g:THREE.BufferGeometry,m:THREE.Material,p:THREE.Object3D,x:number,y:number,z:number,sx=1,sy=1,sz=1)=>{const o=new THREE.Mesh(g,m);o.position.set(x,y,z);o.scale.set(sx,sy,sz);o.castShadow=true;o.receiveShadow=true;p.add(o);return o}
-  const ball=(p:THREE.Group,m:THREE.Material,x:number,y:number,z:number,sx:number,sy:number,sz:number)=>mesh(new THREE.SphereGeometry(1,32,24),m,p,x,y,z,sx,sy,sz)
-  const box=(p:THREE.Group,m:THREE.Material,x:number,y:number,z:number,sx:number,sy:number,sz:number)=>mesh(new THREE.BoxGeometry(sx,sy,sz),m,p,x,y,z)
-  const cyl=(p:THREE.Group,m:THREE.Material,x:number,y:number,z:number,r1:number,r2:number,h:number)=>mesh(new THREE.CylinderGeometry(r1,r2,h,32),m,p,x,y,z)
+  const ball=(p:THREE.Object3D,m:THREE.Material,x:number,y:number,z:number,sx:number,sy:number,sz:number)=>mesh(new THREE.SphereGeometry(1,32,24),m,p,x,y,z,sx,sy,sz)
+  const box=(p:THREE.Object3D,m:THREE.Material,x:number,y:number,z:number,sx:number,sy:number,sz:number)=>mesh(new THREE.BoxGeometry(sx,sy,sz),m,p,x,y,z)
+  const cyl=(p:THREE.Object3D,m:THREE.Material,x:number,y:number,z:number,r1:number,r2:number,h:number)=>mesh(new THREE.CylinderGeometry(r1,r2,h,32),m,p,x,y,z)
   const part=(home:[number,number,number],away:[number,number,number],threshold:number)=>{const g=new THREE.Group();g.position.set(...away);g.userData={home:new THREE.Vector3(...home),away:new THREE.Vector3(...away),threshold};armor.add(g);return g}
   const legs=part([0,1,0],[0,1,-2.5],1)
   for(const side of [-1,1]){const x=side*.42;ball(legs,red,x,1.43,0,.3,.39,.31);cyl(legs,red2,x,.94,0,.25,.3,.82);ball(legs,gold,x,.48,.03,.25,.22,.29);box(legs,red,x,.19,.12,.43,.22,.63);box(legs,gold,x,.075,.2,.37,.07,.4);box(legs,dark,x,1.28,.2,.33,.12,.15)}
